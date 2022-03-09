@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public GameState currentState;
 
     [Header("Cut Initial")]
+    public GameObject ready;
     public Transform spawnPoint;
     public float offSetYSpawn;
     public float speedRaySpawn;
@@ -23,7 +24,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        ready.SetActive(false);
+        StartCoroutine("ReadyText");
     }
 
     // Update is called once per frame
@@ -32,20 +34,18 @@ public class GameController : MonoBehaviour
         switch (currentState)
         {
             case GameState.Spawn:
-           
-            _player.transform.position = Vector2.MoveTowards(_player.transform.position, spawnPoint.position, speedRaySpawn * Time.deltaTime);
+
+                _player.transform.position = Vector2.MoveTowards(_player.transform.position, spawnPoint.position, speedRaySpawn * Time.deltaTime);
                 //MoveTowards = move A to B
-                if(_player.transform.position == spawnPoint.position)
+                if (_player.transform.position == spawnPoint.position)
                 {
                     SetGameState(GameState.Gameplay);
                     _player.spawnDone();
                 }
-            break;
+                break;
         }
 
-        if(Input.GetButtonDown("Jump")){
-            SetGameState(GameState.Spawn);
-        }
+
 
     }
 
@@ -60,13 +60,31 @@ public class GameController : MonoBehaviour
         switch (currentState)
         {
             case GameState.Spawn:
-                _player.transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y + offSetYSpawn, 0);
+                SetPlayerSpawnPosition();
                 break;
 
             case GameState.Gameplay:
 
                 break;
         }
+    }
+
+    public void SetPlayerSpawnPosition()
+    {
+        _player.transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y + offSetYSpawn, 0);
+    }
+     IEnumerator ReadyText()
+    {
+        yield return new WaitForSeconds(0.3f);
+        for (int i = 0; i <= 5; i++)
+        {
+            ready.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            ready.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+        }
+        ready.SetActive(false);
+        SetGameState(GameState.Spawn);
     }
 
     #endregion

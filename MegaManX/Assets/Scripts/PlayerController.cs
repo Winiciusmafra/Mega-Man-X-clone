@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+
+        rb.gravityScale = 0;
+       _gameController.SetPlayerSpawnPosition();
     }
 
     // Update is called once per frame
