@@ -40,12 +40,12 @@ public class GameController : MonoBehaviour
                     _player.spawnDone();
                 }
 
-                if(Input.GetButtonDown("Fire1"))
-                {
-                    SetGameState(GameState.Spawn);
-                    Debug.LogError ("ola");
-                }
-                break;
+            break;
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            SetGameState(GameState.Spawn);
+
         }
     }
 
