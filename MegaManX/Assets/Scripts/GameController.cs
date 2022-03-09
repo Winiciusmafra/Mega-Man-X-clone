@@ -32,21 +32,21 @@ public class GameController : MonoBehaviour
         switch (currentState)
         {
             case GameState.Spawn:
-                _player.transform.position = Vector2.MoveTowards(_player.transform.position, spawnPoint.position, speedRaySpawn * Time.deltaTime);
+           
+            _player.transform.position = Vector2.MoveTowards(_player.transform.position, spawnPoint.position, speedRaySpawn * Time.deltaTime);
                 //MoveTowards = move A to B
-                if (_player.transform.position == spawnPoint.position)
+                if(_player.transform.position == spawnPoint.position)
                 {
                     SetGameState(GameState.Gameplay);
                     _player.spawnDone();
                 }
-
             break;
         }
-        if (Input.GetButtonDown("Jump"))
-        {
-            SetGameState(GameState.Spawn);
 
+        if(Input.GetButtonDown("Jump")){
+            SetGameState(GameState.Spawn);
         }
+
     }
 
     #endregion

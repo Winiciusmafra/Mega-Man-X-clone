@@ -36,4 +36,8 @@ public class PlayerController : MonoBehaviour
     public void spawnDone(){
         anim.SetTrigger("Spawn");
     }
+
+    public void SetRay(){
+        anim.SetTrigger("Ray");
+    }
 }
