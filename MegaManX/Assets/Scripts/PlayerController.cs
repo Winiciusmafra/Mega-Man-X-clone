@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     {
         _gameController = FindObjectOfType(typeof(GameController))as GameController;
         _gameController._player = this;
-        
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -24,8 +24,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (_gameController.currentState != GameState.Gameplay)
+        {
+            return;
+        }
+
     }
 
     #endregion
+
+    public void spawnDone(){
+        anim.SetTrigger("Spawn");
+    }
 }
