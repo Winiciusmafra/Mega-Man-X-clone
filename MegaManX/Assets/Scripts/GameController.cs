@@ -10,6 +10,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
    
+    [HideInInspector] public PlayerController _player;
     public GameState currentState;
 
     #region Unity methods 
