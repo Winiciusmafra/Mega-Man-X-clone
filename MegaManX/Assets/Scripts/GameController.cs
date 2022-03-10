@@ -76,7 +76,7 @@ public class GameController : MonoBehaviour
      IEnumerator ReadyText()
     {
         yield return new WaitForSeconds(0.3f);
-        for (int i = 0; i <= 5; i++)
+        for (int i = 0; i <= 4; i++)
         {
             ready.SetActive(true);
             yield return new WaitForSeconds(0.2f);
