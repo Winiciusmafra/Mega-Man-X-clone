@@ -18,6 +18,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     private bool IsGround;
 
+    [Header("Shot config")]
+    public GameObject shotPrefab;
+    public float speedShot;
+    public Transform[] arm;
+    public bool isChargeShot;
+
     #region Unity methods 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +41,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-     void Update()
+    void Update()
     {
         if (_gameController.currentState != GameState.Gameplay)
         {
@@ -61,7 +67,19 @@ public class PlayerController : MonoBehaviour
         // }
         if (Input.GetButtonDown("Jump") && IsGround == true)
         {
-            rb.AddForce(new Vector2(0,jumpForce));
+            rb.AddForce(new Vector2(0, jumpForce));
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shot();
+            isChargeShot= true;
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            isChargeShot = false;
+           
         }
         rb.velocity = new Vector2(h * speed, rb.velocity.y);
 
@@ -71,7 +89,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void FixedUpdate(){
+    private void FixedUpdate()
+    {
         IsGround = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
     }
 
@@ -86,7 +105,8 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetTrigger("Spawn");
     }
-    private void SpawnDone(){
+    private void SpawnDone()
+    {
         anim.SetBool("isSpawn", false);
         rb.gravityScale = 1;
         _gameController.SetGameState(GameState.Gameplay);
@@ -95,5 +115,43 @@ public class PlayerController : MonoBehaviour
     public void SetRay()
     {
         anim.SetTrigger("Ray");
+        
+    }
+
+    public void Shot(){
+        float s = speedShot;
+        int idArm=0;
+        if (isLookLeft == true)
+        {
+            s = s * -1;
+        }
+        if (idAnimation == 1 && IsGround == true)
+        {
+            idArm = 1;
+        }
+        if (IsGround == false)
+        {
+            idArm = 2;
+        }
+
+    
+
+        GameObject tempShot = Instantiate(shotPrefab, arm[idArm].position, transform.localRotation);
+        tempShot.GetComponent<Rigidbody2D>().velocity = new Vector2(s,0);
+        anim.SetLayerWeight(1,1);
+        StopCoroutine("ShotCoroutine");
+        StartCoroutine("ShotCoroutine");
+    }
+
+    IEnumerator ShotCoroutine(){
+        yield return new WaitForSeconds(0.2f);
+        if (isChargeShot == false)
+        {
+            anim.SetLayerWeight(1,0);
+        }
+        else{
+            StartCoroutine("ShotCoroutine");
+        }
+        
     }
 }
