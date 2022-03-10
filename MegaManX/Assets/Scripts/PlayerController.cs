@@ -69,9 +69,12 @@ public class PlayerController : MonoBehaviour
         isLookLeft = !isLookLeft;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
-    public void spawnDone()
+    public void spawnStart()
     {
         anim.SetTrigger("Spawn");
+    }
+    private void SpawnDone(){
+        _gameController.SetGameState(GameState.Gameplay);
     }
 
     public void SetRay()

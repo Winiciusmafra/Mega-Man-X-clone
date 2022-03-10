@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
                 if (_player.transform.position == spawnPoint.position)
                 {
                     SetGameState(GameState.Gameplay);
-                    _player.spawnDone();
+                    _player.spawnStart();
                 }
                 break;
         }
