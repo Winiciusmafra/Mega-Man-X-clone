@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 395022320}
   - component: {fileID: 395022321}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: gound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798608881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.004, z: 0}
+  m_LocalPosition: {x: 0, y: -0.197731, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2123652829}
@@ -851,7 +851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748914983}
   - component: {fileID: 1748914984}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset_floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,6 +1079,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e53221f3a37a241a10ae523bc2c86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  jumpForce: 0
+  speed: 2.5
+  jumpForce: 180
   isLookLeft: 0
+  groundCheck: {fileID: 798608882}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
