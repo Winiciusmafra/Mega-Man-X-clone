@@ -150,6 +150,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1120,6 +1121,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      mmx1-buster_16: 1616216164800660337
+      mmx1-buster_27: -8838476392294699052
+      mmx1-buster_26: 2530885029459466565
+      mmx1-buster_29: -68109589572317358
+      mmx1-buster_5: 5619487256798038841
+      mmx1-buster_40: -1890612881883893688
+      mmx1-buster_39: -1355367970992994135
+      mmx1-buster_7: -4606384160018768459
+      mmx1-buster_10: 7017752382199225629
+      mmx1-buster_2: -29561040982941344
+      mmx1-buster_28: -274444250076232709
+      mmx1-buster_20: 5108340471596631324
+      mmx1-buster_24: 7118990668415750032
+      mmx1-buster_41: -6938900304355263818
+      mmx1-buster_32: -6249729144937723250
+      mmx1-buster_30: 3734203906224853702
+      mmx1-buster_38: -347165133262087903
+      mmx1-buster_3: -3997405699895402171
+      mmx1-buster_19: 8606107501824153910
+      mmx1-buster_42: 4209436825978783792
+      mmx1-buster_14: -5012883233300713898
+      mmx1-buster_25: -8646265954638814632
+      mmx1-buster_17: 6338944551680996025
+      mmx1-buster_23: -4992517953035512688
+      mmx1-buster_22: 3849428419972731802
+      mmx1-buster_36: -7514629966339703516
+      mmx1-buster_35: 7440186105498912033
+      mmx1-buster_37: -5333900782165202794
+      mmx1-buster_13: 5490081279905572969
+      mmx1-buster_31: 6061858930803843309
+      mmx1-buster_34: -2911597887259016584
+      mmx1-buster_0: 1763911723152408263
+      mmx1-buster_12: 841721630917344878
+      mmx1-buster_18: -3877858031382602788
+      mmx1-buster_21: 4233729938673836288
+      mmx1-buster_6: -1380148004999957638
+      mmx1-buster_33: -7573126384236575232
+      mmx1-buster_9: 7401559982705190782
+      mmx1-buster_8: 6653091457700542288
+      mmx1-buster_11: -5720728092028992717
+      mmx1-buster_4: -6108468808617680215
+      mmx1-buster_1: -5276883874321848007
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
