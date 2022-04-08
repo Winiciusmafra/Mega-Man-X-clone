@@ -23,6 +23,13 @@ public class PlayerController : MonoBehaviour
     public float speedShot;
     public Transform[] arm;
     public bool isChargeShot;
+    private bool isShot;
+    [Header("Charge Shot Config")]
+    public Animator chargShotAnimator;
+    public AudioSource chargAudioSource;
+    public AudioClip chargA;
+    public AudioClip chargB;
+
 
     #region Unity methods 
     // Start is called before the first frame update
@@ -73,12 +80,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Shot();
-            isChargeShot= true;
+            isShot= true;
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
+            isShot = false;
             isChargeShot = false;
+            chargShotAnimator.gameObject.SetActive(false);
            
         }
         rb.velocity = new Vector2(h * speed, rb.velocity.y);
@@ -145,13 +154,31 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ShotCoroutine(){
         yield return new WaitForSeconds(0.2f);
-        if (isChargeShot == false)
+        if (isShot == false)
         {
             anim.SetLayerWeight(1,0);
         }
         else{
+            if (isChargeShot == false)
+            {
+                isChargeShot = true;
+                StartCoroutine("ChargeShot");
+            }
             StartCoroutine("ShotCoroutine");
         }
         
+    }
+
+    IEnumerator ChargeShot()
+    {
+        chargShotAnimator.gameObject.SetActive(true);
+        chargAudioSource.clip = chargA;
+        chargAudioSource.Play();
+        chargAudioSource.loop = false;
+        yield return new WaitUntil(() => chargAudioSource.isPlaying == false);
+        chargAudioSource.clip = chargB;
+        chargAudioSource.Play();
+        chargAudioSource.loop = true;
+        chargShotAnimator.SetLayerWeight(1, 1);
     }
 }
