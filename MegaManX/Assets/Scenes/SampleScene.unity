@@ -1502,6 +1502,7 @@ MonoBehaviour:
   chargAudioSource: {fileID: 2143386921}
   chargA: {fileID: 8300000, guid: 3170ad8098304684faa2ddb3668e4d4f, type: 3}
   chargB: {fileID: 8300000, guid: 96d90739f76d39a4e94ae4a070b40aaa, type: 3}
+  ChargColor: {r: 0.5673282, g: 0.5710194, b: 0.5754717, a: 1}
 --- !u!1 &2143386917
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip chargA;
     public AudioClip chargB;
 
+    public Color ChargColor;
 
     #region Unity methods 
     // Start is called before the first frame update
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
         {
             Shot();
             isShot= true;
+            
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -88,6 +90,8 @@ public class PlayerController : MonoBehaviour
             isShot = false;
             isChargeShot = false;
             chargShotAnimator.gameObject.SetActive(false);
+            StopCoroutine("SetColorCharge");
+            sr.color = Color.white;
            
         }
         rb.velocity = new Vector2(h * speed, rb.velocity.y);
@@ -171,6 +175,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ChargeShot()
     {
+        StartCoroutine("SetColorCharge");
         chargShotAnimator.gameObject.SetActive(true);
         chargAudioSource.clip = chargA;
         chargAudioSource.Play();
@@ -180,5 +185,14 @@ public class PlayerController : MonoBehaviour
         chargAudioSource.Play();
         chargAudioSource.loop = true;
         chargShotAnimator.SetLayerWeight(1, 1);
+    }
+
+    IEnumerator SetColorCharge(){
+        sr.color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = ChargColor;
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine("SetColorCharge");
+
     }
 }
